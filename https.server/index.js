@@ -57,17 +57,23 @@ module.exports = function(NODE) {
 
 		});
 
-		const spdyServer = spdy.createServer({
-			key: fs.readFileSync('./ssl/ssl.key'),
-			cert: fs.readFileSync('./ssl/ssl.crt')
-		}, expressApp).listen(NODE.data.port, () => {
+		try {
 
-			NODE.addStatus({
-				message: `running`,
-				color: 'green'
+			const spdyServer = spdy.createServer({
+				key: fs.readFileSync(NODE.data.keyPath),
+				cert: fs.readFileSync(NODE.data.certPath)
+			}, expressApp).listen(NODE.data.port, () => {
+
+				NODE.addStatus({
+					message: `running`,
+					color: 'green'
+				});
+
 			});
 
-		});
+		} catch (err) {
+			NODE.fail(err, state);
+		}
 
 	});
 
