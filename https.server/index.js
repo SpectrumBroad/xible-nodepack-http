@@ -72,7 +72,7 @@ module.exports = function(NODE) {
 			});
 
 		} catch (err) {
-			NODE.fail(err.toString(), state);
+			NODE.error(err, state);
 		}
 
 	});
