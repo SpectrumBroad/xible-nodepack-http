@@ -1,11 +1,11 @@
 {
-  "name": "xible-nodepack-https",
-  "version": "0.1.0",
-  "description": "Set of https nodes for Xible",
+  "name": "xible-nodepack-http",
+  "version": "0.2.0",
+  "description": "Set of HTTP and HTTPS nodes for Xible",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/spectrumbroad/xible-nodepack-https"
+    "url": "https://github.com/spectrumbroad/xible-nodepack-http"
   },
   "scripts": {
     "prepublishOnly": "npm shrinkwrap --only=prod"
