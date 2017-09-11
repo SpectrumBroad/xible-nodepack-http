@@ -1,0 +1,6 @@
+{
+  "http.server.secure": {
+    "color": "salmon",
+    "extends": "http.server"
+  }
+}

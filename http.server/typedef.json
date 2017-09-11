@@ -1,0 +1,10 @@
+{
+  "http.server": {
+    "color": "darksalmon",
+    "extends": "object"
+  },
+  "http.request": {
+    "color": "lightsalmon",
+    "extends": "object"
+  }
+}

@@ -1,11 +1,11 @@
 {
-	"name": "https.server",
+	"name": "http.server",
 	"type": "object",
 	"description": "Sets up a HTTP server.",
 	"outputs": {
 		"server": {
-			"type": "https.server"
+			"type": "http.server"
 		}
 	},
-	"vault": ["port", "keyPath", "certPath"]
+	"vault": ["port"]
 }

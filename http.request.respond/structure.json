@@ -1,0 +1,23 @@
+{
+  "name": "http.request.repond",
+  "type": "action",
+  "description": "Responds to a HTTP(S) request.",
+  "inputs": {
+    "trigger": {
+  		"type": "trigger"
+  	},
+    "requests": {
+  		"type": "http.request"
+  	},
+    "response": {
+  		"type": "string",
+      "maxConnectors": 1,
+      "description": "If multiple responses are connected, they will be joined together."
+  	}
+  },
+  "outputs": {
+    "done": {
+  		"type": "trigger"
+  	}
+  }
+}
