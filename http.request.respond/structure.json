@@ -1,5 +1,5 @@
 {
-  "name": "http.request.repond",
+  "name": "http.request.respond",
   "type": "action",
   "description": "Responds to a HTTP(S) request.",
   "inputs": {
