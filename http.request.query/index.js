@@ -3,8 +3,8 @@
 module.exports = (NODE) => {
   const reqsIn = NODE.getInputByName('requests');
 
-  const valueOut = NODE.getOutputByName('value');
-  valueOut.on('trigger', (conn, state, callback) => {
+  const valuesOut = NODE.getOutputByName('values');
+  valuesOut.on('trigger', (conn, state, callback) => {
     reqsIn.getValues(state)
     .then((requests) => {
       const queries = requests

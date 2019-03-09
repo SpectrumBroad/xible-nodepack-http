@@ -1,5 +1,5 @@
 {
-  "name": "http.query",
+  "name": "http.request.query",
   "type": "object",
   "description": "Returns the value of the given querystring field from a HTTP(S) request.",
   "inputs": {
@@ -8,8 +8,9 @@
     }
   },
   "outputs": {
-    "value": {
-      "type": "string"
+    "values": {
+      "type": "string",
+      "description": "A single string per request containing the value for the specified querystring parameter name."
     }
   }
 }
