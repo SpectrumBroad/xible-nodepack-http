@@ -1,11 +1,11 @@
 {
-	"name": "http.server",
-	"type": "object",
-	"description": "Sets up a HTTP server.",
-	"outputs": {
-		"server": {
-			"type": "http.server"
-		}
-	},
-	"vault": ["port"]
+  "name": "http.server",
+  "type": "object",
+  "description": "Sets up a HTTP server.",
+  "outputs": {
+    "server": {
+      "type": "http.server"
+    }
+  },
+  "vault": ["port"]
 }

@@ -4,12 +4,12 @@
   "description": "Returns the value of the given querystring field from a HTTP(S) request.",
   "inputs": {
     "requests": {
-  		"type": "http.request"
-  	}
+      "type": "http.request"
+    }
   },
   "outputs": {
     "value": {
-  		"type": "string"
-  	}
+      "type": "string"
+    }
   }
 }
