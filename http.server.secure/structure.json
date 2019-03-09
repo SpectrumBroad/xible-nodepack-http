@@ -1,11 +1,11 @@
 {
-	"name": "http.server.secure",
-	"type": "object",
-	"description": "Sets up a HTTPS server.",
-	"outputs": {
-		"server": {
-			"type": "http.server.secure"
-		}
-	},
-	"vault": ["port", "keyPath", "certPath"]
+  "name": "http.server.secure",
+  "type": "object",
+  "description": "Sets up a HTTPS server.",
+  "outputs": {
+    "server": {
+      "type": "http.server.secure"
+    }
+  },
+  "vault": ["port", "keyPath", "certPath"]
 }
