@@ -1,0 +1,10 @@
+{
+  "name": "http.header",
+  "type": "object",
+  "description": "Returns a HTTP header object.",
+  "outputs": {
+    "header": {
+      "type": "http.header"
+    }
+  }
+}

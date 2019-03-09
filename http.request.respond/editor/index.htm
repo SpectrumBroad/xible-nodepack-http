@@ -1,1 +1,34 @@
-<input type="number" placeholder="status" value="200" data-outputvalue="status" required="required" />
+<input
+  type="number"
+  placeholder="status"
+  value="200"
+  data-output-value="status"
+  data-hide-if-attached="input[name=status]"
+  required="required"
+/>
+<label class="required" data-description="If checked, the body input will be converted to a JSON string, and the content-type header set appropriately. If left unchecked, the body input will be treated as a regular string and multiple inputs will be joined together.">
+  <input
+    type="checkbox"
+    value="true"
+    data-output-value="json"
+    checked
+    id="json"
+  />JSON<span></span>
+</label>
+<label id="isolateLabel" class="required" data-description="Specifies whether a single provided object for the body should be isolated, or encapsulated in an array.">
+  <input
+    type="checkbox"
+    value="true"
+    data-output-value="isolate"
+  />isolate single<span></span>
+</label>
+<script>
+  document.getElementById('json')
+  .addEventListener('change', function() {
+    if (this.checked) {
+      document.getElementById('isolateLabel').style.display = '';
+    } else {
+      document.getElementById('isolateLabel').style.display = 'none';
+    }
+  });
+</script>

@@ -6,5 +6,9 @@
   "http.request": {
     "color": "lightsalmon",
     "extends": "object"
+  },
+  "http.header": {
+    "color": "salmon",
+    "extends": "object"
   }
 }

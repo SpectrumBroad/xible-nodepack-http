@@ -1,0 +1,20 @@
+{
+  "name": "http.request.header",
+  "type": "object",
+  "description": "Returns the value of the given header field from a HTTP(S) request.",
+  "inputs": {
+    "requests": {
+      "type": "http.request"
+    }
+  },
+  "outputs": {
+    "headers": {
+      "type": "http.header",
+      "description": "A single http.header object per request, containing the header name and value."
+    },
+    "values": {
+      "type": "string",
+      "description": "A single string per request containing the value for the specified header name."
+    }
+  }
+}

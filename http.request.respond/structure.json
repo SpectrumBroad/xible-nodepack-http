@@ -4,20 +4,24 @@
   "description": "Responds to a HTTP(S) request.",
   "inputs": {
     "trigger": {
-  		"type": "trigger"
-  	},
+      "type": "trigger"
+    },
     "requests": {
-  		"type": "http.request"
-  	},
-    "response": {
-  		"type": "string",
-      "maxConnectors": 1,
-      "description": "If multiple responses are connected, they will be joined together."
-  	}
+      "type": "http.request"
+    },
+    "status": {
+      "type": "math.number"
+    },
+    "headers": {
+      "type": "http.header"
+    },
+    "body": {
+      "type": "object"
+    }
   },
   "outputs": {
     "done": {
-  		"type": "trigger"
-  	}
+      "type": "trigger"
+    }
   }
 }
