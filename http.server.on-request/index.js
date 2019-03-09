@@ -6,7 +6,7 @@ module.exports = (NODE) => {
   const triggerOut = NODE.getOutputByName('trigger');
   const reqOut = NODE.getOutputByName('request');
 
-  reqOut.on('trigger', (conn, state, callback) => {
+  reqOut.on('trigger', async (conn, state) => {
     let req = null;
     const nodeState = state.get(NODE);
 
@@ -14,26 +14,24 @@ module.exports = (NODE) => {
       req = nodeState.req;
     }
 
-    callback(req);
+    return req;
   });
 
-  NODE.on('init', (state) => {
+  NODE.on('init', async (state) => {
     let method = NODE.data.method || 'get';
     method = method.toLowerCase();
 
-    serverIn.getValues(state)
-    .then((servers) => {
-      servers.forEach((server) => {
-        // setup a seperate state for each server
-        const splitState = state.split();
+    const servers = await serverIn.getValues(state)
+    servers.forEach((server) => {
+      // setup a seperate state for each server
+      const splitState = state.split();
 
-        server[method](NODE.data.path || '/', (req, res) => {
-          splitState.set(NODE, {
-            req
-          });
-
-          triggerOut.trigger(splitState);
+      server[method](NODE.data.path || '/', (req, res) => {
+        splitState.set(NODE, {
+          req
         });
+
+        triggerOut.trigger(splitState);
       });
     });
   });
