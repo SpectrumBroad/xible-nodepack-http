@@ -2,8 +2,21 @@
   "name": "http.server.secure",
   "type": "object",
   "description": "Sets up a HTTPS server.",
+  "inputs": {
+    "trigger": {
+      "type": "trigger",
+      "description": "Start the webserver(s). If this trigger is not connected, the server(s) are started when the flow is started."
+    },
+    "ports": {
+      "type": "math.number"
+    }
+  },
   "outputs": {
-    "server": {
+    "started": {
+      "type": "trigger",
+      "description": "Indicates that the webserver(s) have started."
+    },
+    "servers": {
       "type": "http.server.secure"
     }
   },

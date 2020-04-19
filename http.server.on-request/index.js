@@ -1,7 +1,8 @@
 'use strict';
 
 module.exports = (NODE) => {
-  const serverIn = NODE.getInputByName('server');
+  const triggerIn = NODE.getInputByName('trigger');
+  const serversIn = NODE.getInputByName('servers');
 
   const triggerOut = NODE.getOutputByName('trigger');
   const reqOut = NODE.getOutputByName('request');
@@ -17,16 +18,16 @@ module.exports = (NODE) => {
     return req;
   });
 
-  NODE.on('init', async (state) => {
+  triggerIn.on('trigger', async (conn, state) => {
     let method = NODE.data.method || 'get';
     method = method.toLowerCase();
 
-    const servers = await serverIn.getValues(state)
+    const servers = await serversIn.getValues(state);
     servers.forEach((server) => {
       // setup a seperate state for each server
       const splitState = state.split();
 
-      server[method](NODE.data.path || '/', (req, res) => {
+      server[method](NODE.data.path || '/', (req) => {
         splitState.set(NODE, {
           req
         });

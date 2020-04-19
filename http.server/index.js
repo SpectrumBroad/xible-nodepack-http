@@ -1,66 +1,22 @@
 'use strict';
 
+const startServers = require('../startServers.js');
+
 module.exports = (NODE) => {
-  let expressApp;
-
-  const serverOut = NODE.getOutputByName('server');
-  serverOut.on('trigger', (conn, state, callback) => {
-    if (!expressApp) {
-      NODE.once('init', () => callback(expressApp));
-      return;
-    }
-
-    callback(expressApp);
+  const triggerIn = NODE.getInputByName('trigger');
+  triggerIn.on('trigger', async (conn, state) => {
+    startServers(NODE, state);
   });
 
-  NODE.on('init', (state) => {
-    const express = require('express');
-    const bodyParser = require('body-parser');
-    const http = require('http');
+  const serversOut = NODE.getOutputByName('servers');
+  serversOut.on('trigger', async (conn, state) => {
+    const thisState = state.get(NODE);
+    return thisState ? state.get(NODE).servers : undefined;
+  });
 
-    expressApp = express();
-    expressApp.use(bodyParser.json());
-
-    // setup default express stuff
-    expressApp.use((req, res, next) => {
-      res.removeHeader('X-Powered-By');
-
-      // disable caching
-      res.header('cache-control', 'private, no-cache, no-store, must-revalidate');
-      res.header('expires', '-1');
-      res.header('pragma', 'no-cache');
-
-      // access control
-      res.header('access-control-allow-origin', '*');
-      res.header('access-control-allow-headers', 'x-access-token, content-type');
-      res.header('access-control-allow-methods', 'GET,PUT,POST,PATCH,DELETE,OPTIONS,HEAD');
-
-      NODE.addStatus({
-        message: `${req.method} ${req.originalUrl}`,
-        timeout: 1000
-      });
-
-      if (req.method === 'OPTIONS') {
-        res.status(200).end();
-        return;
-      }
-
-      // local vars for requests
-      req.locals = {};
-
-      next();
-    });
-
-    try {
-      expressApp
-      .listen(NODE.data.port, () => {
-        NODE.addStatus({
-          message: 'running',
-          color: 'green'
-        });
-      });
-    } catch (err) {
-      NODE.error(err, state);
+  NODE.on('init', async (state) => {
+    if (!triggerIn.isConnected()) {
+      startServers(NODE, state);
     }
   });
 };

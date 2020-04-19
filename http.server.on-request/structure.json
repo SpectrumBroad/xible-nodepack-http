@@ -3,7 +3,11 @@
   "type": "event",
   "description": "Triggered whenever a HTTP(S) request lands on the given route.",
   "inputs": {
-    "server": {
+    "trigger": {
+      "type": "trigger",
+      "description": "Starts waiting for a request. You probably want to hook this up to the 'started' output of a 'http.server' or 'http.server.secure' node"
+    },
+    "servers": {
       "type": "http.server"
     }
   },
