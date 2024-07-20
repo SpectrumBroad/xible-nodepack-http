@@ -1,18 +1,15 @@
 {
   "name": "xible-nodepack-http",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Set of HTTP and HTTPS nodes for Xible",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/spectrumbroad/xible-nodepack-http"
   },
-  "scripts": {
-    "prepublishOnly": "npm shrinkwrap --only=prod"
-  },
   "dependencies": {
-    "express": "4.*",
-    "body-parser": "*",
-    "spdy": "*"
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "spdy": "^4.0.2"
   }
 }
